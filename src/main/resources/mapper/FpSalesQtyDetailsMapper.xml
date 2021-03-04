@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.rt.order.dao.FpSalesQtyDetailsMapper">
+  <resultMap id="BaseResultMap" type="com.rt.order.entity.FpSalesQtyDetails">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="store_id" jdbcType="VARCHAR" property="storeId" />
+    <result column="sub_order_id" jdbcType="VARCHAR" property="subOrderId" />
+    <result column="ono" jdbcType="BIGINT" property="ono" />
+    <result column="deadline_time" jdbcType="BIGINT" property="deadlineTime" />
+    <result column="sku_code" jdbcType="INTEGER" property="skuCode" />
+    <result column="qty" jdbcType="INTEGER" property="qty" />
+    <result column="insert_time" jdbcType="BIGINT" property="insertTime" />
+    <result column="update_time" jdbcType="BIGINT" property="updateTime" />
+    <result column="status" jdbcType="TINYINT" property="status" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, store_id, sub_order_id, ono, deadline_time, sku_code, qty, insert_time, update_time, 
+    status
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from fp_sales_qty_detail
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from fp_sales_qty_detail
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.rt.order.entity.FpSalesQtyDetails">
+    insert into fp_sales_qty_detail (id, store_id, sub_order_id, 
+      ono, deadline_time, sku_code, 
+      qty, insert_time, update_time, 
+      status)
+    values (#{id,jdbcType=BIGINT}, #{storeId,jdbcType=VARCHAR}, #{subOrderId,jdbcType=VARCHAR}, 
+      #{ono,jdbcType=BIGINT}, #{deadlineTime,jdbcType=BIGINT}, #{skuCode,jdbcType=INTEGER}, 
+      #{qty,jdbcType=INTEGER}, #{insertTime,jdbcType=BIGINT}, #{updateTime,jdbcType=BIGINT}, 
+      #{status,jdbcType=TINYINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.rt.order.entity.FpSalesQtyDetails">
+    insert into fp_sales_qty_detail
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="storeId != null">
+        store_id,
+      </if>
+      <if test="subOrderId != null">
+        sub_order_id,
+      </if>
+      <if test="ono != null">
+        ono,
+      </if>
+      <if test="deadlineTime != null">
+        deadline_time,
+      </if>
+      <if test="skuCode != null">
+        sku_code,
+      </if>
+      <if test="qty != null">
+        qty,
+      </if>
+      <if test="insertTime != null">
+        insert_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="storeId != null">
+        #{storeId,jdbcType=VARCHAR},
+      </if>
+      <if test="subOrderId != null">
+        #{subOrderId,jdbcType=VARCHAR},
+      </if>
+      <if test="ono != null">
+        #{ono,jdbcType=BIGINT},
+      </if>
+      <if test="deadlineTime != null">
+        #{deadlineTime,jdbcType=BIGINT},
+      </if>
+      <if test="skuCode != null">
+        #{skuCode,jdbcType=INTEGER},
+      </if>
+      <if test="qty != null">
+        #{qty,jdbcType=INTEGER},
+      </if>
+      <if test="insertTime != null">
+        #{insertTime,jdbcType=BIGINT},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=BIGINT},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.rt.order.entity.FpSalesQtyDetails">
+    update fp_sales_qty_detail
+    <set>
+      <if test="storeId != null">
+        store_id = #{storeId,jdbcType=VARCHAR},
+      </if>
+      <if test="subOrderId != null">
+        sub_order_id = #{subOrderId,jdbcType=VARCHAR},
+      </if>
+      <if test="ono != null">
+        ono = #{ono,jdbcType=BIGINT},
+      </if>
+      <if test="deadlineTime != null">
+        deadline_time = #{deadlineTime,jdbcType=BIGINT},
+      </if>
+      <if test="skuCode != null">
+        sku_code = #{skuCode,jdbcType=INTEGER},
+      </if>
+      <if test="qty != null">
+        qty = #{qty,jdbcType=INTEGER},
+      </if>
+      <if test="insertTime != null">
+        insert_time = #{insertTime,jdbcType=BIGINT},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=BIGINT},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=TINYINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.rt.order.entity.FpSalesQtyDetails">
+    update fp_sales_qty_detail
+    set store_id = #{storeId,jdbcType=VARCHAR},
+      sub_order_id = #{subOrderId,jdbcType=VARCHAR},
+      ono = #{ono,jdbcType=BIGINT},
+      deadline_time = #{deadlineTime,jdbcType=BIGINT},
+      sku_code = #{skuCode,jdbcType=INTEGER},
+      qty = #{qty,jdbcType=INTEGER},
+      insert_time = #{insertTime,jdbcType=BIGINT},
+      update_time = #{updateTime,jdbcType=BIGINT},
+      status = #{status,jdbcType=TINYINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

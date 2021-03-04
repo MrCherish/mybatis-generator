@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.example</groupId>
+    <artifactId>mybatis-generator</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <properties>
+        <version.mysql-connector-java>5.1.34</version.mysql-connector-java>
+        <version.maven-compiler-plugin>3.5.1</version.maven-compiler-plugin>
+        <version.commentGenerator>1.0-SNAPSHOT</version.commentGenerator>
+    </properties>
+
+
+    <dependencies>
+
+        <!-- 代码生成器 -->
+        <dependency>
+            <groupId>org.mybatis.generator</groupId>
+            <artifactId>mybatis-generator-core</artifactId>
+            <version>1.4.0</version>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+                <version>${version.maven-compiler-plugin}</version>
+            </plugin>
+
+            <plugin>
+                <groupId>org.mybatis.generator</groupId>
+                <artifactId>mybatis-generator-maven-plugin</artifactId>
+                <version>1.4.0</version>
+                <dependencies>
+
+                    <dependency>
+                        <groupId>mysql</groupId>
+                        <artifactId>mysql-connector-java</artifactId>
+                        <version>${version.mysql-connector-java}</version>
+                    </dependency>
+
+                    <dependency>
+                        <groupId>com.rt</groupId>
+                        <artifactId>commentGenerator</artifactId>
+                        <version>${version.commentGenerator}</version>
+                    </dependency>
+                </dependencies>
+
+                <configuration>
+                    <configurationFile>${basedir}/src/main/resources/mybatis-generator/generatorConfig.xml
+                    </configurationFile>
+                    <overwrite>true</overwrite>
+                    <verbose>true</verbose>
+                </configuration>
+            </plugin>
+        </plugins>
+
+    </build>
+
+
+</project>
